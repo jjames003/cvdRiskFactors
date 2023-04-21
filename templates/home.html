@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+
+    <title>CTP Spring Project</title>
+    
+
+    <style>
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">The Collegers</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+      
+        <div class="container my-5">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h1 class="mb-4 text-center">Welcome to our project!</h1>
+              <p class="lead mb-4 text-center">Please answer the following questions to get started:</p>
+              <form>
+                <div class="form-group row">
+                  <label for="age" class="col-sm-3 col-form-label">What is your age?</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="age" min="1" max="100" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="gender" class="col-sm-3 col-form-label">What is your gender?</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" id="gender" required>
+                      <option value="" selected disabled>Select your gender</option>
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="height" class="col-sm-3 col-form-label">What is your height in cm?</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="height" min="50" max="280" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="weight" class="col-sm-3 col-form-label">What is your weight in kg?</label>
+                  <div class="col-sm-9">
+                    <input type="number" class="form-control" id="weight" min="15" max="125" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      
+        <footer class="bg-light py-3">
+          <div class="container">
+            <p class="text-center m-0">&copy; <span id="year"></span> Collegers. All rights reserved.</p>
+          </div>
+        </footer>
+      
+        <script>
+          var year = new Date().getFullYear();
+          document.getElementById("year").innerHTML = year;
+        </script>
+      </body>
+      
+</body>
+<script>
+  var year = new Date().getFullYear();
+  document.getElementById("year").innerHTML = year;
+</script>
+</html>
