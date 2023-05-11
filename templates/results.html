@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="center">
+        <h1>You have a {{ percentage }}% chance of having cardiovascular disease</h1>
+        <p><a href="{% url 'home' %}">Back to home page</a></p>
+    </div>
+{% endblock %}

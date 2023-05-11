@@ -1,71 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-          crossorigin="anonymous"></script>
+{% extends 'base.html' %}
+{% load static %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
+{% block content %}
 
-    <title>CTP Spring Project</title>
-    
-
-    <style>
-        .center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        h1 {
-            font-size: 5rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        p {
-            font-size: 1rem;
-            text-align: center;
-        }
-
-    
-    </style>
-</head>
-<body>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">The Collegers</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
       
         <div class="container my-5">
           <div class="row justify-content-center">
             <div class="col-lg-8">
-              <h1 class="mb-4 text-center">Welcome to our project!</h1>
+              <h2 class="mb-4 text-center">Welcome to our project!</h2>
               <p class="lead mb-4 text-center">Please answer the following questions to get started:</p>
-              <form>
+              <form id="home" method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
                 <div class="form-group row">
                   <label for="age" class="col-sm-3 col-form-label">What is your age?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="age" min="1" max="100" required>
+                    <input type="number" class="form-control" id="age" name="age" min="1" max="100" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="gender" class="col-sm-3 col-form-label">What is your gender?</label>
                   <div class="col-sm-9">
-                    <select class="form-control" id="gender" required>
+                    <select class="form-control" id="gender" name="gender" required>
                       <option value="" selected disabled>Select your gender</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
@@ -75,43 +30,43 @@
                 <div class="form-group row">
                   <label for="height" class="col-sm-3 col-form-label">What is your height in cm?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="height" min="50" max="280" required>
+                    <input type="number" class="form-control" id="height" name="height" min="50" max="280" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="weight" class="col-sm-3 col-form-label">What is your weight in kg?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="weight" min="15" max="125" required>
+                    <input type="number" class="form-control" id="weight" name="weight" min="15" max="125" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="systolic-blood-pressure" class="col-sm-3 col-form-label">What is your systolic blood pressure?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="systolic-blood-pressure" min="100" max="200" required>
+                    <input type="number" class="form-control" id="systolic-blood-pressure" name="ap_hi" min="100" max="200" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="diastolic-blood-pressure" class="col-sm-3 col-form-label">What is your diastolic blood pressure?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="diastolic-blood-pressure" min="70" max="130" required>
+                    <input type="number" class="form-control" id="diastolic-blood-pressure" name="ap_lo" min="70" max="130" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="cholesterol" class="col-sm-3 col-form-label">What level is your cholesterol?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="cholesterol" min="1" max="3" required>
+                    <input type="number" class="form-control" id="cholesterol" name="cholesterol" min="1" max="3" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="glucose" class="col-sm-3 col-form-label">What level is your glucose?</label>
                   <div class="col-sm-9">
-                    <input type="number" class="form-control" id="glucose" min="1" max="3" required>
+                    <input type="number" class="form-control" id="glucose" name="gluc" min="1" max="3" required>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="smoke" class="col-sm-3 col-form-label">Do you smoke?</label>
                   <div class="col-sm-9">
-                    <select class="form-control" id="smoke" required>
+                    <select class="form-control" id="smoke" name="smoke" required>
                       <option value="" selected disabled>Select your answer</option>
                       <option value="1">Yes</option>
                       <option value="0">No</option>
@@ -121,7 +76,7 @@
                 <div class="form-group row">
                   <label for="alcohol" class="col-sm-3 col-form-label">Do you drink alcohol?</label>
                   <div class="col-sm-9">
-                    <select class="form-control" id="alcohol" required>
+                    <select class="form-control" id="alcohol" name="alco" required>
                       <option value="" selected disabled>Select your answer</option>
                       <option value="1">Yes</option>
                       <option value="0">No</option>
@@ -131,14 +86,18 @@
                 <div class="form-group row">
                   <label for="active" class="col-sm-3 col-form-label">Do you actively exercise?</label>
                   <div class="col-sm-9">
-                    <select class="form-control" id="active" required>
+                    <select class="form-control" id="active" name="active" required>
                       <option value="" selected disabled>Select your answer</option>
                       <option value="1">Yes</option>
                       <option value="0">No</option>
                     </select>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group row text-center">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" id="submit-button">Get Results</button>
+                  </div>
+                </div>
               </form>
             </div>
           </div>
@@ -154,11 +113,9 @@
           var year = new Date().getFullYear();
           document.getElementById("year").innerHTML = year;
         </script>
-      </body>
-      
-</body>
+     
 <script>
   var year = new Date().getFullYear();
   document.getElementById("year").innerHTML = year;
 </script>
-</html>
+{% endblock %}
