@@ -3,119 +3,127 @@
 
 {% block content %}
 
-      
-        <div class="container my-5">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <h2 class="mb-4 text-center">Welcome to our project!</h2>
-              <p class="lead mb-4 text-center">Please answer the following questions to get started:</p>
-              <form id="home" method="POST" action="{% url 'home' %}">
-                {% csrf_token %}
-                <div class="form-group row">
-                  <label for="age" class="col-sm-3 col-form-label">What is your age?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="age" name="age" min="1" max="100" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="gender" class="col-sm-3 col-form-label">What is your gender?</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" id="gender" name="gender" required>
-                      <option value="" selected disabled>Select your gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="height" class="col-sm-3 col-form-label">What is your height in cm?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="height" name="height" min="50" max="280" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="weight" class="col-sm-3 col-form-label">What is your weight in kg?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="weight" name="weight" min="15" max="125" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="systolic-blood-pressure" class="col-sm-3 col-form-label">What is your systolic blood pressure?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="systolic-blood-pressure" name="ap_hi" min="100" max="200" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="diastolic-blood-pressure" class="col-sm-3 col-form-label">What is your diastolic blood pressure?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="diastolic-blood-pressure" name="ap_lo" min="70" max="130" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="cholesterol" class="col-sm-3 col-form-label">What level is your cholesterol?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="cholesterol" name="cholesterol" min="1" max="3" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="glucose" class="col-sm-3 col-form-label">What level is your glucose?</label>
-                  <div class="col-sm-9">
-                    <input type="number" class="form-control" id="glucose" name="gluc" min="1" max="3" required>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="smoke" class="col-sm-3 col-form-label">Do you smoke?</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" id="smoke" name="smoke" required>
-                      <option value="" selected disabled>Select your answer</option>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="alcohol" class="col-sm-3 col-form-label">Do you drink alcohol?</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" id="alcohol" name="alco" required>
-                      <option value="" selected disabled>Select your answer</option>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <label for="active" class="col-sm-3 col-form-label">Do you actively exercise?</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" id="active" name="active" required>
-                      <option value="" selected disabled>Select your answer</option>
-                      <option value="1">Yes</option>
-                      <option value="0">No</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group row text-center">
-                  <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary" id="submit-button">Get Results</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <h2 class="mb-4 text-center">Welcome to our project!</h2>
+      <p class="lead mb-4 text-center">Please answer the following questions to get started:</p>
+      <form id="home" method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="form-group question" id="question-age">
+          <label for="age" class="col-form-label">What is your age?</label>
+          <input type="number" class="form-control" id="age" name="age" min="1" max="100" required>
         </div>
-      
-        <footer class="bg-light py-3">
-          <div class="container">
-            <p class="text-center m-0">&copy; <span id="year"></span> Collegers. All rights reserved.</p>
-          </div>
-        </footer>
-      
-        <script>
-          var year = new Date().getFullYear();
-          document.getElementById("year").innerHTML = year;
-        </script>
-     
+        <div class="form-group question" id="question-gender">
+          <label for="gender" class="col-form-label">What is your gender?</label>
+          <select class="form-control" id="gender" name="gender" required>
+            <option value="" selected disabled>Select your gender</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+          </select>
+        </div>
+        <div class="form-group question" id="question-height">
+          <label for="height" class="col-form-label">What is your height in cm?</label>
+          <input type="number" class="form-control" id="height" name="height" min="50" max="280" required>
+        </div>
+        <div class="form-group question" id="question-weight">
+          <label for="weight" class="col-form-label">What is your weight in kg?</label>
+          <input type="number" class="form-control" id="weight" name="weight" min="15" max="125" required>
+        </div>
+        <div class="form-group question" id="question-sys">
+          <label for="systolic-blood-pressure" class="col-form-label">What is your systolic blood pressure?</label>
+          <input type="number" class="form-control" id="systolic-blood-pressure" name="ap_hi" min="100" max="200" required>
+        </div>
+        <div class="form-group question" id="question-diastolic">
+          <label for="diastolic-blood-pressure" class="col-form-label">What is your diastolic blood pressure?</label>
+          <input type="number" class="form-control" id="diastolic-blood-pressure" name="ap_lo" min="70" max="130" required>
+        </div>
+        <div class="form-group question" id="question-cholesterol">
+          <label for="cholesterol" class="col-form-label">What level is your cholesterol?</label>
+          <input type="number" class="form-control" id="cholesterol" name="cholesterol" min="1" max="3" required>
+        </div>
+        <div class="form-group question" id="question-glucose">
+          <label for="glucose" class="col-form-label">What level is your glucose?</label>
+          <input type="number" class="form-control" id="glucose" name="gluc" min="1" max="3" required>
+        </div>
+        <div class="form-group question" id="question-smoke">
+          <label for="smoke" class="col-form-label">Do you smoke?</label>
+          <select class="form-control" id="smoke" name="smoke" required>
+            <option value="" selected disabled>Select your answer</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+          
+        </div>
+        <div class="form-group question" id="question-alcohol">
+          <label for="alcohol" class="col-form-label">Do you drink alcohol?</label>
+          <select class="form-control" id="alcohol" name="alco" required>
+            <option value="" selected disabled>Select your answer</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="form-group question" id="question-exercise">
+           <label for="active" class="col-form-label">Do you actively exercise?</label>
+           <select class="form-control" id="active" name="active" required>
+            <option value="" selected disabled>Select your answer</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+        <!-- Add other questions here following the same structure -->
+        <!-- ... -->
+        <div class="form-group text-center">
+          <p id="question-counter"></p>
+          <button type="button" class="btn btn-primary" id="next-button">Next</button>
+          <button type="submit" class="btn btn-primary d-none" id="submit-button">Get Results</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="bg-light py-3">
+  <div class="container">
+    <p class="text-center m-0">&copy; <span id="year"></span> Collegers. All rights reserved.</p>
+  </div>
+</footer>
+
 <script>
   var year = new Date().getFullYear();
   document.getElementById("year").innerHTML = year;
+
+  var questions = document.querySelectorAll("#home .question");
+  var questionCounter = document.getElementById("question-counter");
+  var nextButton = document.getElementById("next-button");
+  var submitButton = document.getElementById("submit-button");
+  var currentQuestion = 0;
+
+  function showCurrentQuestion() {
+    for (var i = 0; i < questions.length; i++) {
+      questions[i].classList.add("d-none");
+    }
+    questions[currentQuestion].classList.remove("d-none");
+    questionCounter.innerHTML = "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    if (currentQuestion === questions.length - 1) {
+      nextButton.classList.add("d-none");
+      submitButton.classList.remove("d-none");
+    } else {
+      nextButton.classList.remove("d-none");
+      submitButton.classList.add("d-none");
+    }
+  }
+
+  function showNextQuestion() {
+    currentQuestion++;
+    showCurrentQuestion();
+  }
+
+  nextButton.addEventListener("click", showNextQuestion);
+
+  showCurrentQuestion();
 </script>
+
 {% endblock %}
